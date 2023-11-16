@@ -60,6 +60,43 @@ console.log('markdown ->', md)
 
 ```
 
+run it, you will get result as following:
+
+```bash
+ast -> {
+  type: 'root',
+  children: [
+    {
+      type: 'heading',
+      depth: 1,
+      children: [Array],
+      position: [Object]
+    },
+    {
+      type: 'code',
+      lang: 'lang',
+      meta: 'meta',
+      props: 'properties',
+      value: "\nlet s = 'hi'\nconsole.log(s)\n",
+      position: [Object]
+    }
+  ],
+  position: {
+    start: { line: 1, column: 1, offset: 0 },
+    end: { line: 6, column: 1, offset: 69 }
+  }
+}
+
+# note: use ''' to beautify \`\`\`. 
+
+markdown -> # Example
+
+'''lang meta
+let s = 'hi'
+console.log(s)
+'''{{properties}}
+```
+
 ## How does it works ?
 
 ![How does it works?](./readme.png)
