@@ -59,3 +59,7 @@ const md = processor2.stringify(ast)
 console.log('markdown ->', md)
 
 ```
+
+## How does it works ?
+
+![How does it works?](./readme.png)
