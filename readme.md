@@ -1,152 +1,61 @@
 # @imarkjs/remark-code
 
-## Ready
+## Introduction
 
-- [unifiedjs](https://github.com/unifiedjs/unified)
+`@imarkjs/remark-code` is an extension of unifiedjs, to enable code syntax.
 
-## How to create a plugin?
+Support that parse ast from markdown and compile ast into markdown.
 
-#### Install
+## Features
 
-```bash npm 
-npm i -S unified@10.1.2 remark-parse@10.0.1 remark-stringify@10.0.3 remark-frontmatter@5.0.0 remark-gfm@3.0.1 katex@0.15.2 remark-math@5.1.1 remark-html@15.0.2 unist-util-visit@4.1.2 
+1. Compatible with standard code syntax.
+
+    \`\`\`lang metadata 
+    code 
+    \`\`\`
+
+2. Expending a new feature `props`.
+
+    \`\`\`lang metadata 
+    code 
+    \`\`\`{{props}}
+
+## Using
+
+### Install
+
+```bash
+npm i unified remark-parse remark-stringify @imarkjs/remark-code -S
 ```
 
-#### Coding
-
-1. index.js
+### Example
 
 ```javascript
-/**
- * Create an extension for `unified` to enable using in unified.
- * 
- * @param {*} options 
- */
-export default function remarkCode(options = {}) {
-  const data = this.data()
-  /** tokenize */
-  add('micromarkExtensions', code(options))
-  /** extension of `fromMarkdown` */
-  add('fromMarkdownExtensions', codeFromMarkdown())
-  /** extension of `toMarkdown` */
-  add('toMarkdownExtensions', codeToMarkdown(options))
 
-  function add(field, value) {
-    const list = (
-      data[field] ? data[field] : (data[field] = [])
-    )
-    list.push(value)
-  }
+import {unified} from 'unified'
+import remarkParse from 'remark-parse'
+import remarkStringify from 'remark-stringify'
+import remarkCode from '@imarkjs/remark-code'
 
-}
-```
+const str = `
+# Example
+\`\`\`lang meta
+let s = 'hi'
+console.log(s)
+\`\`\`{{properties}}
+`
 
-1. syntax.js
-
-```javascript
-/**
- * Create an extension for `micromark` to enable code block syntax.
- *
- * @returns {Extension}
- *   Extension for `micromark` that can be passed in `extensions`, to
- *   enable code block syntax.
- */
-export function code() {
-    return {
-        flow: { [96]: codeText() }
-    }
-}
-
-export function codeText() {
-
-    return {
-        tokenize: tokenizeCodeText,
-    }
-
-    /**
-     * others...
-     */
-
-}
-```
-
-1. utils.js 
-
-```javascript
-/**
- * 
- * Create an extension for `mdast-util-from-markdown`.
- *
- * @returns {FromMarkdownExtension}
- * Extension for `mdast-util-from-markdown`.
- */
-export function codeFromMarkdown() {
-    return {
-        enter: {
-            codeBlock: enterCodeBlcok,
-            codeMeta: enterCodeMeta,
-            codeData: enterCodeData,
-        },
-        exit: {
-            codeBlock: exitCodeBlcok,
-            codeMeta: exitCodeMeta,
-            codeData: existCodeData,
-            codeContent: exitCodeContent,
-            codeMetadata: exitCodeMetadata,
-            codeProperties: exitCodeProperties
-        }
-    }
-
-    /**
-     * others...
-     */
-}
-
-/**
- * 
- * Create an extension for `mdast-util-to-markdown`.
- *
- * @returns {ToMarkdownExtension}
- * Extension for `mdast-util-to-markdown`.
- */
-export function codeToMarkdown(options) {
-
-    return {
-        handlers: { code }
-    }
-
-    /**
-     * others...
-     */
-}
-```
-
-#### Using
-
-###### parse
-
-```javascript
-const processor = unified()
+const processor1 = unified()
     .use(remarkParse)
-    .use(remarkFrontmatter, { type: 'yaml', fence: '---' })
-    .use(remarkGfm)
-    .use(remarkHtml, {})
-    .use(remarkMath)
     .use(remarkCode)
-const tree = processor.parse(md.trim())
-return processor.runSync(tree)
-```
+const ast = processor1.parse(str)
+console.log('ast ->', ast)
 
-###### stringify
-
-```javascript
-const processor = unified()
+const processor2 = unified()
     .use(remarkParse)
-    .use(remarkFrontmatter, { type: 'yaml', fence: '---' })
-    .use(remarkGfm)
-    .use(remarkHtml, {})
-    .use(remarkMath)
     .use(remarkCode)
     .use(remarkStringify)
-return processor.stringify(mdast)
+const md = processor2.stringify(ast)
+console.log('markdown ->', md)
+
 ```
