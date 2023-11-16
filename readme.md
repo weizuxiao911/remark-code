@@ -12,7 +12,7 @@ Support that parse ast from markdown and compile ast into markdown.
     <br/>
     \`\`\`lang metadata <br/>
     code <br/>
-    \`\`\`<br/><br/>
+    \`\`\`<br/>
 
 2. Expending a new feature `props`.
     <br/>
