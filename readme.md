@@ -10,15 +10,15 @@ Support that parse ast from markdown and compile ast into markdown.
 
 1. Compatible with standard code syntax.
 
-    \`\`\`lang metadata 
-    code 
-    \`\`\`
+    \`\`\`lang metadata \r\n
+    code \r\n
+    \`\`\`\r\n
 
 2. Expending a new feature `props`.
 
-    \`\`\`lang metadata 
-    code 
-    \`\`\`{{props}}
+    \`\`\`lang metadata \r\n
+    code \r\n
+    \`\`\`{{props}} \r\n
 
 ## Using
 
