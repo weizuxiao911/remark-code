@@ -1,9 +1,9 @@
 import {unified} from 'unified'
 import remarkParse from 'remark-parse'
 import remarkStringify from 'remark-stringify'
-import remarkCode from '@imarkjs/remark-code'
+import remarkCode from '../index.js'
 
-const str = `# Example
+const str = `
 \`\`\`lang meta
 let s = 'hi'
 console.log(s)
