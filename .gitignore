@@ -5,3 +5,4 @@ node_modules/
 lib/*.d.ts
 yarn.lock
 index.d.ts
+

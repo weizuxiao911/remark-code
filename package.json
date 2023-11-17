@@ -1,7 +1,7 @@
 {
   "name": "@imarkjs/remark-code",
   "version": "1.0.5",
-  "description": "",
+  "description": "an extension of `unifiedjs` to enable code syntax, with a new feature `props`.",
   "exports": "./index.js",
   "files": [
     "lib/",
