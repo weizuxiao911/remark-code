@@ -4,9 +4,18 @@ import remarkStringify from 'remark-stringify'
 import remarkCode from '../index.js'
 
 const str = `
+# Multi-line
+
 \`\`\`lang meta
-let s = 'hi'
-console.log(s)
+code
+...
+\`\`\`
+
+# New Feature
+
+\`\`\`lang meta
+code
+...
 \`\`\`{{properties}}
 `
 

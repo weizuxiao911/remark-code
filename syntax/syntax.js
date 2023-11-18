@@ -150,7 +150,6 @@ export function codeText() {
                 return left(code)
             }
             if (null === code || -4 === code) {
-                console.log('closed ->', code, sizeData)
                 effects.exit('codeBlock')
                 return ok(code)
             }
