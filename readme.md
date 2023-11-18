@@ -2,9 +2,7 @@
 
 ## Introduction
 
-`@imarkjs/remark-code` is an extension of unifiedjs, to enable code syntax.
-
-Support that parse ast from markdown and compile ast into markdown.
+an extension for `unified` to enable code syntax, support that parse `AST` from `markdown` and compile `AST` into `markdown`.
 
 ## Features
 
