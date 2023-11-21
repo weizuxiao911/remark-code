@@ -1,7 +1,16 @@
 {
   "name": "@imarkjs/remark-code",
-  "version": "1.0.0",
   "description": "an extension of `unifiedjs` to enable code syntax, with a new feature `props`.",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "module",
+  "author": "weizuxiao <727897965@qq.com>",
+  "keywords": [
+    "unifiedjs",
+    "code",
+    "markdown",
+    "mdast"
+  ],
   "exports": "./index.js",
   "files": [
     "lib/",
@@ -12,15 +21,6 @@
   "scripts": {
     "build": "tsc --build --clean && tsc --build && type-coverage && micromark-build"
   },
-  "keywords": [
-    "unifiedjs",
-    "code",
-    "markdown",
-    "mdast"
-  ],
-  "author": "weizuxiao <727897965@qq.com>",
-  "license": "MIT",
-  "type": "module",
   "devDependencies": {
     "@imarkjs/remark-code": "^1.1.0",
     "@types/node": "^20.9.0",
@@ -37,6 +37,7 @@
     "remark-stringify": "^10.0.3",
     "unified": "^10.1.2"
   },
+  "dependencies": {},
   "publishConfig": {
     "access": "public"
   }
