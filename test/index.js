@@ -15,7 +15,6 @@ code
 
 \`\`\`lang meta
 code
-...
 \`\`\`{{properties}}
 `
 
