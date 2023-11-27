@@ -1,5 +1,5 @@
 {
-  "name": "@imarkjs/remark-code",
+  "name": "@imarkjs/remark-codes",
   "description": "an extension of `unifiedjs` to enable code syntax, with a new feature `props`.",
   "version": "1.0.0",
   "license": "MIT",
