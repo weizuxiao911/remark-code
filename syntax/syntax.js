@@ -210,7 +210,8 @@ export function codeText() {
             if (sizeRight != 2) {
                 return nok(code)
             }
-            if (null === code || -4 === code) {
+            console.log('right =>', code)
+            if (null === code || 32 === code || -3 === code || -4 === code) {
                 effects.exit('codeBlock')
                 return ok(code)
             }

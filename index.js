@@ -6,23 +6,27 @@ import { code } from './syntax/syntax.js'
 import { codeFromMarkdown, codeToMarkdown } from './lib/util.js'
 
 /**
- *  Create an extension to use in `unified`.
+ * Create an extension to use in `unified`.
+ * @this {any}
  */
 export default function remarkCode() {
-  // @ts-expect-error: TS is wrong about `this`.
-  const self = /** @type {Processor} */ (this)
-  // const settings = options
-  const data = self.data()
+  const data = this.data()
 
-  const micromarkExtensions =
-    data.micromarkExtensions || (data.micromarkExtensions = [])
-  const fromMarkdownExtensions =
-    data.fromMarkdownExtensions || (data.fromMarkdownExtensions = [])
-  const toMarkdownExtensions =
-    data.toMarkdownExtensions || (data.toMarkdownExtensions = [])
+  add('micromarkExtensions', code())
+  add('fromMarkdownExtensions', codeFromMarkdown())
+  add('toMarkdownExtensions', codeToMarkdown())
 
-  micromarkExtensions.push(code())
-  fromMarkdownExtensions.push(codeFromMarkdown())
-  toMarkdownExtensions.push(codeToMarkdown())
+  /**
+   * @param {string} field
+   * @param {unknown} value
+   */
+  function add(field, value) {
+    const list = /** @type {unknown[]} */ (
+      // Other extensions
+      /* c8 ignore next 2 */
+      data[field] ? data[field] : (data[field] = [])
+    )
 
+    list.push(value)
+  }
 }
