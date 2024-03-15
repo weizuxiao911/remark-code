@@ -116,7 +116,7 @@ const data = {
   "type": "read"
 }
 str = decode(data?.data)
-str = str?.replace(/\r\n/g, '\n')
+// str = str?.replace(/\r\n/g, '\n')
 // console.log(str)
 // str = fs.readFileSync('./index.md', 'utf-8')
 const processor1 = unified()

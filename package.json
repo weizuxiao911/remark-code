@@ -1,7 +1,7 @@
 {
   "name": "@ylzcc/remark-code",
   "description": "an extension of `unifiedjs` to enable code syntax, with a new feature `props`.",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "license": "MIT",
   "type": "module",
   "author": "weizuxiao <727897965@qq.com>",

@@ -86,7 +86,7 @@ export function codeText() {
                 return nok(code)
             }
             /** to match code block */
-            if (-4 === code) {
+            if (0 > code) {
                 effects.exit('codeMeta')
                 return data(code)
             }
@@ -108,7 +108,7 @@ export function codeText() {
                 return end(code)
             }
             /** must types '\n' before matching end symbols */
-            if (-4 === code) {
+            if (0 > code) {
                 toColse = 1
             } else {
                 toColse = 0
@@ -118,7 +118,7 @@ export function codeText() {
                 effects.enter('codeData')
             }
             /** ignore first \n */
-            if (!sizeData && -4 === code) {
+            if (!sizeData && 0 > code) {
                 sizeData++
                 effects.enter('codeContentIgnore')
                 effects.consume(code)
@@ -149,7 +149,7 @@ export function codeText() {
             if (123 == code) {
                 return left(code)
             }
-            if (null === code || -4 === code) {
+            if (null === code || 0 > code) {
                 effects.exit('codeBlock')
                 return ok(code)
             }
@@ -211,7 +211,7 @@ export function codeText() {
                 return nok(code)
             }
             console.log('right =>', code)
-            if (null === code || -4 === code) {
+            if (null === code || 0 > code) {
                 effects.exit('codeBlock')
                 return ok(code)
             }
