@@ -98,3 +98,11 @@ console.log(s)
 ## How does it works ?
 
 ![How does it works?](./readme.png)
+
+# 注意事项
+
+在Micromark（一个Markdown解析器）的上下文中，concrete: true 是一个标志位，用于告诉Micromark在处理某个节点时，这个节点是一个不可分割的实体（即“具体的”或“连续的”）。这意味着在处理该节点时，解析器不应该尝试在节点内部进行更多的语法规则匹配，而是将整个区块视为单一实体。
+
+在factory函数中，concrete属性主要应用于那些在Markdown文本中具有明显边界且不应被进一步拆分的结构，比如代码块、HTML块、链接引用等。对于代码块（code fence）而言，concrete: true意味着一旦进入代码块，解析器将完整地对待整个代码块，直到遇到结束标记为止，期间不会试图解析代码块内部的Markdown语法。
+
+简而言之，concrete: true有助于确保解析器正确地区分和处理文档中那些具有封闭边界的独立结构。

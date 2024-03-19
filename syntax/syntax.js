@@ -74,7 +74,7 @@ export function codeText() {
             /** 
              * unless starts with three charcter '\`' or has any more
              */
-            if (sizeOpen !== 3 || null === code) {
+            if (sizeOpen !== 3 || null == code) {
                 return nok(code)
             }
             /** to match metadata */
@@ -186,9 +186,9 @@ export function codeText() {
 
         /** to match properties, after start symbols '\{\{', supports muti-line text */
         function props(code) {
-            if (null === code) {
-                return nok(code)
-            }
+            // if (null === code) {
+            //     return nok(code)
+            // }
             if (125 === code) {
                 return right(code)
             }
