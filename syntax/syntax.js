@@ -26,6 +26,7 @@ export function codeText() {
 
     return {
         tokenize: tokenizeCodeText,
+        concrete: true
     }
 
     /**
@@ -82,9 +83,9 @@ export function codeText() {
 
         /** match metadata, in current line after start symbols '\`\`\`',  */
         function meta(code) {
-            if (null === code) {
-                return nok(code)
-            }
+            // if (null === code) {
+            //     return nok(code)
+            // }
             /** to match code block */
             if (0 > code) {
                 effects.exit('codeMeta')
@@ -99,9 +100,9 @@ export function codeText() {
 
         /** match code block, from next line after start symbols '\`\`\`', util to match end sysmbols '`\`\`' */
         function data(code) {
-            if (null === code) {
-                return nok(code)
-            }
+            // if (null === code) {
+            //     return nok(code)
+            // }
             /** to match end symbols */
             if (96 === code && toColse) {
                 sizeData && effects.exit('codeData')

@@ -7,102 +7,7 @@ import remarkStringify from 'remark-stringify'
 
 import * as fs from 'fs'
 
-// const str = fs.readFileSync('./index.md', 'utf-8')
-
-let str = `
-# 一级标题
-## 二级标题
-### 三级标题
-#### 四级标题
-##### 五级标题
-###### 六级标题
-
-**cuti**
-
-***下划线***
-<span></span>
-
-![图片描述](https://statics.oscollege.net/466e0be4-9777-46ee-9142-2a4fda3741f6.png "图片描述")
-
-[](https://www.baidu.com/ "连**接标**题")
-
-
-**cuti**
-
-*xieti*
-
-
-zheng**粗*xie~~YY~~UUU*体***斜体*
-
-~~删除线~~
-
-// markdown的JSON数据转为editor的JSON数据
-export const toEditorJSON = (value: any) => {
-  const obj: any = {}
-  obj.type = "document"
-  if (value?.children?.length) {
-    obj.content = value?.children?.map((v: any) => toNodeObj(v))
-  }
-  return obj
-}
-
-> 音
-
-- 列表1
-  - 列表1-1
-    - 列表1-1-1
-      - 列表1-1-1-1
-        - 列表1-1-1-1-1
-          - 列表1-1-1-1-1-
-- 列表1
-  - 列表1-1
-    - 列表1-1-1
-      - 列表1-1-1-1
-        - 列表1-1-1-1-1
-          - 列表1-1-1-1-1-1
-
-1. 列表1
-2. 列表2
-3. 列表3
-4. 列表4
-
----
-
-| 列1标题 | 列2标题 | 列3标题 |
-| :-----: | :-----: | :-----: |
-| 单元格1 | 单元格2 | 单元格3 |
-| 单元格4 | 单元格5 | 单元格6 |
-
-\`行内代码\`
-
-\`\`\`ts
-type shareDataType = {
-    editor: Instance | undefined | null
-    [key: string]: any
-}
-
-\r\n\
-\`\`\`
-
-\`\`\`js
-zhix
-\`\`\`{{exec}}
-
-\`\`\`js
-fuz\r\n\r\n
-\`\`\`{{copy}}
-
-
-
-
-`
-
-str = `
-
-\`\`\`lang
-\r\n
-\`\`\`\{{prop}}\r\n\n
-`
+const str = fs.readFileSync('./index.md', 'utf-8')
 
 const decode = (str) => {
   return decodeURIComponent(atob(str).split('').map(function (c) {
@@ -121,7 +26,6 @@ const decode = (str) => {
 // str = fs.readFileSync('./index.md', 'utf-8')
 const processor1 = unified()
   .use(remarkParse)
-  .use(remarkGfm)
   .use(remarkCode)
 const ast = processor1.parse(str)
 console.log('ast ->', ast)
@@ -132,4 +36,4 @@ const processor2 = unified()
     .use(remarkCode)
     .use(remarkStringify)
 const md = processor2.stringify(ast)
-// console.log('markdown ->', md)
+console.log('markdown ->', md)
