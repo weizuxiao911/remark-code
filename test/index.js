@@ -10,9 +10,9 @@ import * as fs from 'fs'
 const str = fs.readFileSync('./index.md', 'utf-8')
 
 const decode = (str) => {
-  return decodeURIComponent(atob(str).split('').map(function (c) {
-    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-  }).join(''))
+    return decodeURIComponent(atob(str).split('').map(function (c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''))
 }
 
 // const data = {
@@ -25,10 +25,11 @@ const decode = (str) => {
 // console.log(str)
 // str = fs.readFileSync('./index.md', 'utf-8')
 const processor1 = unified()
-  .use(remarkParse)
-  .use(remarkCode)
+    .use(remarkParse)
+    .use(remarkGfm)
+    .use(remarkCode)
 const ast = processor1.parse(str)
-console.log('ast ->', ast)
+console.log('ast ->', JSON.stringify(ast))
 
 const processor2 = unified()
     .use(remarkParse)
